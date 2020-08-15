@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:resto_rw/core/models/restaurant_model.dart';
+import 'package:resto_rw/core/utils/currency_utils.dart';
+import 'package:resto_rw/core/viewmodels/restaurant_provider.dart';
+import 'package:resto_rw/ui/screens/restaurant/items/highlight.dart';
 import 'package:resto_rw/ui/screens/widgets/custom_rating.dart';
+import 'package:resto_rw/ui/screens/widgets/review_item.dart';
 
 class RestaurantDetailScreen extends StatelessWidget {
   RestaurantModel restaurant;
@@ -126,13 +131,24 @@ class _RestaurantDetailBodyState extends State<RestaurantDetailBody> {
                 ),
                 _title(),
                 SizedBox(height: 5),
-               /*  _cuisines(),
+                _cuisines(),
                 SizedBox(height: 5),
                 _address(),
                 SizedBox(height: 5),
-                _price(), */
+                _price(),
                 
-                Divider(color: Colors.black12)
+                Divider(color: Colors.black12),
+                Highlight(highlight: widget.restaurant.highlights),
+                Divider(color: Colors.black12),
+                
+                SizedBox(height: 10),
+                _addressFull(),
+                SizedBox(height: 10),
+                _openTime(),
+                SizedBox(height: 10),
+                Divider(color: Colors.black12),
+                SizedBox(height: 10),
+                _reviews()
               ],
             ),
           )
@@ -164,6 +180,146 @@ class _RestaurantDetailBodyState extends State<RestaurantDetailBody> {
           fit: BoxFit.cover
         )
       ),
+    );
+  }
+
+  Widget _cuisines() {
+    return Text(
+      widget.restaurant.cuisines,
+      style: TextStyle(
+        color: Colors.black87,
+        fontSize: 12,
+      ),
+    );
+  } 
+  
+  Widget _address() {
+    return Text(
+      widget.restaurant.address,
+      style: TextStyle(
+        color: Colors.black87,
+        fontSize: 12,
+      ),
+    );
+  }
+
+  Widget _price() {
+    return Text(
+      "${widget.restaurant.currency} ${formatter.format(widget.restaurant.priceForTwo)} / 2 Person",
+      style: TextStyle(
+        color: Colors.green,
+        fontSize: 14,
+        fontWeight: FontWeight.bold
+      ),
+    );
+  }
+
+  Widget _addressFull() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          "Alamat Restoran",
+          style: TextStyle(
+            color: Colors.black87,
+            fontSize: 15,
+            fontWeight: FontWeight.bold
+          ),
+        ),
+        SizedBox(height: 5),
+        Text(
+          widget.restaurant.addressFull,
+          style: TextStyle(
+            color: Colors.black87,
+            fontSize: 12,
+          ),
+        ),
+      ],
+    );
+  }
+  
+  Widget _openTime() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          "Jam Buka",
+          style: TextStyle(
+            color: Colors.black87,
+            fontSize: 15,
+            fontWeight: FontWeight.bold
+          ),
+        ),
+        SizedBox(height: 5),
+        Text(
+          widget.restaurant.openTime,
+          style: TextStyle(
+            color: Colors.black87,
+            fontSize: 12,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _reviews() {
+    return Builder(
+      builder: (context) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              "Review Terbaru",
+              style: TextStyle(
+                color: Colors.black87,
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            _reviewList(),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _reviewList() {
+    return Builder(
+      builder: (context) {
+        return Consumer<RestaurantProvider>(
+          builder: (context, restaurantProv, _) {
+
+            //* If review is null than fetch
+            if (restaurantProv.reviewList == null) {
+              print(widget.restaurant.id);
+              restaurantProv.getReviewsByRestaurant(widget.restaurant.id.toString(), context);
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            //* If collection is not found
+            if (restaurantProv.reviewList.length == 0) {
+              return Center(
+                child: Text(
+                  "Belum ada review"
+                ),
+              );
+            }
+            // print(restaurantProv.reviewList.length);
+            return ListView.builder(
+              shrinkWrap: true,
+              itemCount: restaurantProv.reviewList.length,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+
+                var review = restaurantProv.reviewList[index];
+                return ReviewItem(review: review);
+              },
+            );
+          },
+        );
+      },
     );
   }
 }

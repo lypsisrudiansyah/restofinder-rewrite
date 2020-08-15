@@ -1,7 +1,7 @@
 class ReviewModel {
   int id;
-  int text;
-  int time;
+  String text;
+  String time;
   double ratingStar;
   UserModel user;
 

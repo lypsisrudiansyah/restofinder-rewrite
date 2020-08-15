@@ -4,6 +4,7 @@ import 'package:resto_rw/core/models/restaurant_model.dart';
 import 'package:resto_rw/ui/screens/home/home_screen.dart';
 import 'package:resto_rw/ui/screens/restaurant/restaurant_by_collection_screen.dart';
 import 'package:resto_rw/ui/screens/restaurant/restaurant_detail_screen.dart';
+import 'package:resto_rw/ui/screens/restaurant/restaurant_search_screen.dart';
 
 class RouterGenerator {
   
@@ -21,7 +22,7 @@ class RouterGenerator {
         return MaterialPageRoute(builder: (_) => HomeScreen());
         break;
       case routeRestaurantSearch:
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        return MaterialPageRoute(builder: (_) => RestaurantSearchScreen());
         break;
       case routeDetailRestaurant:
         if (args is RestaurantModel) {

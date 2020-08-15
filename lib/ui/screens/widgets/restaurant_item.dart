@@ -47,7 +47,7 @@ class _RestaurantItemState extends State<RestaurantItem> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 1000),
+      duration: Duration(milliseconds: 130),
       width: deviceWidth(context),
       margin: EdgeInsets.symmetric(vertical: marginVertical, horizontal: marginHorizontal),
       //* test apaan ni ada box shadow baru ngeliat, coba pahami

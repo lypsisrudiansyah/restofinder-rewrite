@@ -35,7 +35,7 @@ class Api {
   //* Review Endpoint
   //* Please replace %res_id% with your restaurant_id
   //* Count = 20 adalah jumlah maksimal data untuk diambil
-  String getReview = "$baseURL/reviews?res_id=%res_id%&count=20";
+  String getReview = "$baseURL/reviews?res_id=%res_id%&start=0&count=20";
 
   
 }
