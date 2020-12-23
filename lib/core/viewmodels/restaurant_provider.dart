@@ -9,7 +9,6 @@ import 'package:resto_rw/ui/router/router.dart';
 
 import '../../injector.dart';
 
-// test: ada 3 tipe change notifier coba cari tahu apa bedanya yang dari material dan foundation
 class RestaurantProvider extends ChangeNotifier {
   //* ----------------------------
   //* This is side for property data

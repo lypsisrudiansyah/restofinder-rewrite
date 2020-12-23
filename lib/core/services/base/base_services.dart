@@ -14,11 +14,10 @@ class BaseServices {
   Options _headersOption;
 
   Future _getToken() async {
-    ///* test: Pahami ini
     var _token = await AuthUtils.instance.getToken();
     _headersOption = ConfigServices.getHeaders(token: _token);
   }
-  //* test: kenapa ada semacam tanda object yang mambungkus data dan useToken
+  
   Future<dynamic> request(String url, RequestType type, BuildContext context,
       {dynamic data, bool useToken}) async {
     var response;

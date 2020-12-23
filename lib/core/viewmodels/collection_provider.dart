@@ -35,7 +35,6 @@ class CollectionProvider extends ChangeNotifier {
 
   /// Function to navigate to restaurant by collection
   void goToRestaurantList(CollectionModel collection, BuildContext context) async {
-    //* test: kenapa listennya false, coba cari pengimplementasian yang true
     await Provider.of<RestaurantProvider>(context, listen: false).clearRestaurantByCollection();
     Navigator.pushNamed(context, RouterGenerator.routeRestaurantByCollection, arguments: collection);
   }

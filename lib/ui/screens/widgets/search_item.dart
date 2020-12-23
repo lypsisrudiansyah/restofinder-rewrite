@@ -35,7 +35,6 @@ class _SearchItemState extends State<SearchItem> {
             Icon(Icons.search, size: 20, color: Colors.black54),
             SizedBox(width: 5),
             Expanded(
-              //* test: pelajari ini textfield, sistematikanya
               child: TextField(
                 controller: widget.controller,
                 textInputAction: TextInputAction.done,

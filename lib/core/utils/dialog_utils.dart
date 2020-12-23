@@ -14,7 +14,6 @@ class DialogUtils {
         configuration:
             FadeScaleTransitionConfiguration(barrierDismissible: false),
         builder: (context) {
-          //* test: kenapa didalam ini ada ternary lalu elsenya menjadi navigator.pop
           return InfoDialog(
             text: message,
             onClickOk: () =>

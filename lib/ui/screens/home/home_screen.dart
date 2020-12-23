@@ -36,7 +36,6 @@ class HomeScreen extends StatelessWidget {
       builder: (context) {
         return Consumer<RestaurantProvider>(
           builder: (context, restaurantProv, _) {
-            //* test: gimane si pemahaman searchItem ni
             return SearchItem(
               controller: searchController,
               onClick: () => restaurantProv.goToSearchRestaurant(context),
@@ -152,7 +151,6 @@ class HomeBody extends StatelessWidget {
 
             return Container(
               height: 150,
-              // test: apa nih shrinkWrap
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: collectionProv.collectionList.length,

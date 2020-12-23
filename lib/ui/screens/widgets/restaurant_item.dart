@@ -50,7 +50,6 @@ class _RestaurantItemState extends State<RestaurantItem> {
       duration: Duration(milliseconds: 130),
       width: deviceWidth(context),
       margin: EdgeInsets.symmetric(vertical: marginVertical, horizontal: marginHorizontal),
-      //* test apaan ni ada box shadow baru ngeliat, coba pahami
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8),

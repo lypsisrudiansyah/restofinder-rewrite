@@ -30,7 +30,6 @@ class CollectionItem extends StatelessWidget {
     );
   }
 
-  //* test: apa ini, gimana hasil gradientnya
   Widget _gradientBlack() {
     return Container(
       width: 120,

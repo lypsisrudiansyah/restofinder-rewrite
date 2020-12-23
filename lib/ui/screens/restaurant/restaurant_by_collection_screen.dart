@@ -20,7 +20,6 @@ class RestaurantByCollectionScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        // test : apa bedanya dengan brightness yang lain
         brightness: Brightness.light,
         elevation: 0,
         backgroundColor: Colors.white,
@@ -80,7 +79,6 @@ class RestaurantByCollectionBody extends StatelessWidget {
             }
 
             return ListView.builder(
-              //* test: apa ini shrinkWrap
               shrinkWrap: true,
               itemCount: restaurantProv.restaurantByCollectionList.length,
               physics: NeverScrollableScrollPhysics(),
