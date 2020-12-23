@@ -10,7 +10,7 @@ class Api {
 
   //* Collection Endpoint
   //* Please replace %latitude% and %longitude%
-  //* with your location coordinate
+  //* with your location coordinate 
   String getCollections = "$baseURL/collections?lat=%latitude%&lon=%longitude%&city_id=74";
   
   //* Retaurant Endpoint
